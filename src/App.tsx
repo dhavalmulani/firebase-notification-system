@@ -1,6 +1,6 @@
 import './App.css';
 import { registerServiceWorker } from './utils/registerServiceWorker';
-import { notifications } from './hooks/notifications';
+import { notifications } from './utils/notifications';
 
 
 function App() {
