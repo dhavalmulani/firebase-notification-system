@@ -1,24 +1,23 @@
-import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import { registerServiceWorker } from './utils/registerServiceWorker';
+import { notifications } from './hooks/notifications';
+
 
 function App() {
+
+  // register service worker and sent notifications
+  const handleNotification = async (status: string) => {
+   await registerServiceWorker();
+    notifications(status);
+  };
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div className='container'>
+        <button className='button' onClick={() => handleNotification("success")}>Get Success Notification</button>
+        <button className='button' onClick={() => handleNotification("warning")}>Get Warning Notification</button>
+        <button className='button' onClick={() => handleNotification("info")}>Get Info Notification</button>
+      </div>
     </div>
   );
 }
